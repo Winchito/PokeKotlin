@@ -74,7 +74,6 @@ class MainActivity : AppCompatActivity() {
         var inn = SubClasses().Interna()
         println(inn.presentar())
 
-
         println(pepito.saludo())
         fernanda.apodo = "SuperPepe"
         println(pepito.saludo())
@@ -105,7 +104,6 @@ class MainActivity : AppCompatActivity() {
 
 
 */
-
 
         var btFight = findViewById<Button>(R.id.btFight)
         btFight.setOnClickListener {
@@ -275,32 +273,24 @@ class MainActivity : AppCompatActivity() {
         var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
-
-
     private fun fight(p1: Pokemon, p2: Pokemon) {
 
         var emtLog = findViewById<EditText>(R.id.emtLog)
         emtLog.setText("")
         var text = ""
 
-        text += "\n${p1.getName()} (${
-            p1.getLifePoints().toInt()
-        }) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
+        text += "\n${p1.getName()} (${p1.getLifePoints().toInt()}) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
 
         while (p1.getLifePoints() > 0 && p2.getLifePoints() > 0) {
             text += "\n${p1.getName()} ataca!"
             p1.attack();
             p2.setLifePoints(p2.getLifePoints() - p1.getAttackPoints())
-            text += "\n${p1.getName()} (${
-                p1.getLifePoints().toInt()
-            }) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
+            text += "\n${p1.getName()} (${p1.getLifePoints().toInt()}) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
             if (p2.getLifePoints() > 0) {
                 text += "\n${p2.getName()} ataca!"
                 p2.attack()
                 p1.setLifePoints(p1.getLifePoints() - p2.getAttackPoints())
-                text += "\n${p1.getName()} (${
-                    p1.getLifePoints().toInt()
-                }) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
+                text += "\n${p1.getName()} (${p1.getLifePoints().toInt()}) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
             }
         }
         if (p1.getLifePoints() > 0) text += "\n\nEL CAMPEON ES ${p1.getName()}"
@@ -308,15 +298,12 @@ class MainActivity : AppCompatActivity() {
 
         emtLog.setText(text)
 
-
         var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
 
         var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
-
-
     private fun loadDataPokemon(tv: TextView, p: Pokemon) {
         var description: String = ""
 
@@ -326,6 +313,5 @@ class MainActivity : AppCompatActivity() {
 
         tv.text = description
     }
-
 }
 

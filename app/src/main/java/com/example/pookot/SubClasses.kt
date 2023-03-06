@@ -1,6 +1,6 @@
 package com.example.pookot
 
-class SubClasses {
+class SubClasses{
     private var name = "Padre"
     fun presentar(): String { return this.name }
 
