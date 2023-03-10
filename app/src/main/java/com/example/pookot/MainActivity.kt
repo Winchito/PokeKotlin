@@ -16,18 +16,23 @@ class MainActivity : AppCompatActivity() {
         lateinit var maincontext: Context
     }
 
+    //Companion valores estaticos, el maincontext proporciona el appContext general de la aplicación
+
+    //lateinit asigna el valor de una propiedad para despues
     private lateinit var pok: Pokemon
     private lateinit var waterPok: waterPokemon
     private lateinit var firePok: firePokemon
     private lateinit var earthPok: earthPokemon
 
-
-    object pepe {
+    /*
+    //Objetos anonimos
+    object Pepe {
         var apodo = "pepito"
         fun saludo() {
             println("Hola, me llaman $apodo")
         }
     }
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,35 @@ class MainActivity : AppCompatActivity() {
         maincontext = this
 
 /*
+        //Prueba ejercicios Atletas
+        var athlete: Athlete = Athlete("Cesar Gonzalez", 1.80f, 69f, 23)
+        var cyclist: Cyclist = Cyclist("Pedro Fonseca",1.70f,80f,25,"Todoterreno",25.6f)
+        var swimmer: Swimmer = Swimmer("Nicolas Guiterrez", 1.75f, 70f, 20, "Braza", 5f)
+        var runner: Runner = Runner("Claudio Sanchez", 1.68f, 66f, 26, "Trote", 15f)
+        var triathlete: triAthlete = triAthlete("Victor Garcia", 1.65f, 62f, 25, "Mariposa",7f, "Carrera de vallas", 13f, "BMX", 20.2f)
+
+
+        println("Hola!, mi nombre es ${athlete.name} tengo ${athlete.age}, mido ${athlete.height} cm y peso ${athlete.weight} kg!")
+        athlete.rest()
+        println("Hola!, mi nombre es ${cyclist.name}, soy un ciclista, tengo ${cyclist.age}, mido ${cyclist.height} cm y peso ${athlete.weight} kg!")
+        cyclist.compete()
+        cyclist.rideBike()
+        println("Hola!, mi nombre es ${swimmer.name} soy un nadador, tengo ${swimmer.age}, mido ${swimmer.height} cm y peso ${swimmer.weight} kg!")
+        swimmer.compete()
+        swimmer.swim()
+        println("Hola!, mi nombre es ${runner.name}, soy un corredor, tengo ${runner.age}, mido ${runner.height} cm y peso ${runner.weight}!")
+        runner.compete()
+        runner.run()
+        println("Hola!, mi nombre es ${triathlete.name}, soy un triatleta! Tengo ${triathlete.age}, mido ${triathlete.height} cm y peso ${triathlete.weight}!")
+        triathlete.swim()
+        triathlete.run()
+        triathlete.rideBike()
+
+        */
+
+/*
+        //Introducción Programación Orientada a Objetos
+
         var pepito: Person = Person("Pepito", "RFJF4IK")
         println(pepito.alive)
         println(pepito.name)
@@ -65,6 +99,9 @@ class MainActivity : AppCompatActivity() {
 */
 
 /*
+
+        // Acceso a las Subclases de las clases
+
         var sc = SubClasses()
         println(sc.presentar())
 
@@ -74,9 +111,13 @@ class MainActivity : AppCompatActivity() {
         var inn = SubClasses().Interna()
         println(inn.presentar())
 
+        // Clases Anonimas
+
         println(pepito.saludo())
-        fernanda.apodo = "SuperPepe"
+        pepito.apodo = "SuperPepe"
         println(pepito.saludo())
+
+        //Data class (Solo almacena datos, aunque se puede poner metodos, no es recomendado)
 
         var sol : star = star("Sol", 696340f, "Vía Láctea")
         println(sol)
@@ -87,6 +128,8 @@ class MainActivity : AppCompatActivity() {
 
         var nueva : star = star()
         println(nueva)
+
+        //Enum class
 
         var hoy: dias = dias.LUNES
         var semana = dias.values()
@@ -105,7 +148,7 @@ class MainActivity : AppCompatActivity() {
 
 */
 
-        var btFight = findViewById<Button>(R.id.btFight)
+        val btFight = findViewById<Button>(R.id.btFight)
         btFight.setOnClickListener {
             fight(firePok, earthPok)
         }
@@ -115,51 +158,44 @@ class MainActivity : AppCompatActivity() {
 
     fun createPokemon(v: View) {
 
-        var etName = findViewById<EditText>(R.id.etName)
-        var etAttackPower = findViewById<EditText>(R.id.etAttackPower)
+        val etName = findViewById<EditText>(R.id.etName)
+        val etAttackPower = findViewById<EditText>(R.id.etAttackPower)
 
         pok = Pokemon()
 
         if (!etName.text.isNullOrEmpty() && !etAttackPower.text.isNullOrEmpty())
-            pok.Pokemon(
-                etName.text.toString(),
-                etAttackPower.text.toString().toFloat()
-            )
+            pok.Pokemon(etName.text.toString(), etAttackPower.text.toString().toFloat())
 
-        var tvPokemon = findViewById<TextView>(R.id.tvPokemon)
+        val tvPokemon = findViewById<TextView>(R.id.tvPokemon)
         loadDataPokemon(tvPokemon, pok)
 
-        var ivPokemon = findViewById<ImageView>(R.id.imgPokemon)
+        val ivPokemon = findViewById<ImageView>(R.id.imgPokemon)
         ivPokemon.setImageResource(R.mipmap.pokemon)
 
     }
 
     fun createWaterPokemon(v: View) {
-        var etWaterName = findViewById<EditText>(R.id.etWaterName)
-        var etWaterAttackPower = findViewById<EditText>(R.id.etWaterAttackPower)
-        var etWaterMaxResistence = findViewById<EditText>(R.id.etWaterMaxResistence)
+        val etWaterName = findViewById<EditText>(R.id.etWaterName)
+        val etWaterAttackPower = findViewById<EditText>(R.id.etWaterAttackPower)
+        val etWaterMaxResistence = findViewById<EditText>(R.id.etWaterMaxResistence)
 
         waterPok = waterPokemon()
 
         if (!etWaterName.text.isNullOrEmpty() && !etWaterAttackPower.text.isNullOrEmpty())
-            waterPok.waterPokemon(
-                etWaterName.text.toString(),
-                etWaterAttackPower.text.toString().toFloat(),
-                etWaterMaxResistence.text.toString().toInt()
-            )
+            waterPok.waterPokemon(etWaterName.text.toString(), etWaterAttackPower.text.toString().toFloat(), etWaterMaxResistence.text.toString().toInt())
 
-        var imgWaterPokemon = findViewById<ImageView>(R.id.imgWaterPokemon)
+        val imgWaterPokemon = findViewById<ImageView>(R.id.imgWaterPokemon)
         imgWaterPokemon.setImageResource(R.mipmap.water)
         imgWaterPokemon.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
 
-        var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
+        val tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
 
     fun cureWaterPokemon(v: View) {
         waterPok.cure()
-        var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
+        val tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
 
@@ -168,45 +204,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun evolveWaterPokemon(v: View) {
-        var etEvolveWaterPokemon = findViewById<EditText>(R.id.etEvolveWaterPokemon)
+        val etEvolveWaterPokemon = findViewById<EditText>(R.id.etEvolveWaterPokemon)
 
         waterPok.evolve(etEvolveWaterPokemon.text.toString())
 
-        var imgWaterPokemon = findViewById<ImageView>(R.id.imgWaterPokemon)
+        val imgWaterPokemon = findViewById<ImageView>(R.id.imgWaterPokemon)
         imgWaterPokemon.setImageResource(R.mipmap.water_evolved)
 
-        var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
+        val tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
 
     }
 
 
     fun createFirePokemon(v: View) {
-        var etFireName = findViewById<EditText>(R.id.etFireName)
-        var etFireAttackPower = findViewById<EditText>(R.id.etFireAttackPower)
-        var etFireBallTemperature = findViewById<EditText>(R.id.etFireBallTemperature)
+        val etFireName = findViewById<EditText>(R.id.etFireName)
+        val etFireAttackPower = findViewById<EditText>(R.id.etFireAttackPower)
+        val etFireBallTemperature = findViewById<EditText>(R.id.etFireBallTemperature)
 
         firePok = firePokemon()
 
         if (!etFireName.text.isNullOrEmpty() && !etFireAttackPower.text.isNullOrEmpty())
-            firePok.firePokemon(
-                etFireName.text.toString(),
-                etFireAttackPower.text.toString().toFloat(),
-                etFireBallTemperature.text.toString().toInt()
-            )
+            firePok.firePokemon(etFireName.text.toString(), etFireAttackPower.text.toString().toFloat(), etFireBallTemperature.text.toString().toInt())
 
-        var ivFirePokemon = findViewById<ImageView>(R.id.imgFirePokemon)
+        val ivFirePokemon = findViewById<ImageView>(R.id.imgFirePokemon)
         ivFirePokemon.setImageResource(R.mipmap.fire)
         ivFirePokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
 
 
-        var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
+        val tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
     }
 
     fun cureFirePokemon(v: View) {
         firePok.cure()
-        var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
+        val tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
     }
 
@@ -216,66 +248,65 @@ class MainActivity : AppCompatActivity() {
 
     fun evolveFirePokemon(v: View) {
 
-        var etEvolveFirePokemon = findViewById<EditText>(R.id.etEvolveFirePokemon)
+        val etEvolveFirePokemon = findViewById<EditText>(R.id.etEvolveFirePokemon)
 
         firePok.evolve(etEvolveFirePokemon.text.toString())
 
-        var ivFirePokemon = findViewById<ImageView>(R.id.imgFirePokemon)
+        val ivFirePokemon = findViewById<ImageView>(R.id.imgFirePokemon)
         ivFirePokemon.setImageResource(R.mipmap.fire_evolved)
 
-        var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
+        val tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
     }
 
 
     fun createEarthPokemon(v: View) {
-        var etEarthName = findViewById<EditText>(R.id.etEarthName)
-        var etEarthAttackPower = findViewById<EditText>(R.id.etEarthAttackPower)
-        var etEarthMaxDepth = findViewById<EditText>(R.id.etEarthMaxDepth)
+        val etEarthName = findViewById<EditText>(R.id.etEarthName)
+        val etEarthAttackPower = findViewById<EditText>(R.id.etEarthAttackPower)
+        val etEarthMaxDepth = findViewById<EditText>(R.id.etEarthMaxDepth)
 
         earthPok = earthPokemon()
 
         if (!etEarthName.text.isNullOrEmpty() && !etEarthAttackPower.text.isNullOrEmpty())
-            earthPok.earthPokemon(
-                etEarthName.text.toString(),
-                etEarthAttackPower.text.toString().toFloat(),
-                etEarthMaxDepth.text.toString().toInt()
-            )
+            earthPok.earthPokemon(etEarthName.text.toString(), etEarthAttackPower.text.toString().toFloat(), etEarthMaxDepth.text.toString().toInt())
 
-        var ivEarthPokemon = findViewById<ImageView>(R.id.imgEarthPokemon)
+        val ivEarthPokemon = findViewById<ImageView>(R.id.imgEarthPokemon)
         ivEarthPokemon.setImageResource(R.mipmap.earth)
         ivEarthPokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
 
 
-        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        val tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
 
     fun cureEarthPokemon(v: View) {
         earthPok.cure()
-        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        val tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
 
+    fun sayByeEarthPokemon(v: View) {
+        earthPok.sayBye()
+    }
     fun sayHiEarthPokemon(v: View) {
         earthPok.sayHi()
     }
 
     fun evolveEarthPokemon(v: View) {
 
-        var etEvolveEarthPokemon = findViewById<EditText>(R.id.etEvolveEarthPokemon)
+        val etEvolveEarthPokemon = findViewById<EditText>(R.id.etEvolveEarthPokemon)
 
         earthPok.evolve(etEvolveEarthPokemon.text.toString())
 
-        var ivEarthPokemon = findViewById<ImageView>(R.id.imgEarthPokemon)
+        val ivEarthPokemon = findViewById<ImageView>(R.id.imgEarthPokemon)
          ivEarthPokemon.setImageResource(R.mipmap.earth_evolved)
 
-        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        val tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
     private fun fight(p1: Pokemon, p2: Pokemon) {
 
-        var emtLog = findViewById<EditText>(R.id.emtLog)
+        val emtLog = findViewById<EditText>(R.id.emtLog)
         emtLog.setText("")
         var text = ""
 
@@ -283,7 +314,7 @@ class MainActivity : AppCompatActivity() {
 
         while (p1.getLifePoints() > 0 && p2.getLifePoints() > 0) {
             text += "\n${p1.getName()} ataca!"
-            p1.attack();
+            p1.attack()
             p2.setLifePoints(p2.getLifePoints() - p1.getAttackPoints())
             text += "\n${p1.getName()} (${p1.getLifePoints().toInt()}) Vs ${p2.getName()} (${p2.getLifePoints().toInt()})"
             if (p2.getLifePoints() > 0) {
@@ -298,14 +329,14 @@ class MainActivity : AppCompatActivity() {
 
         emtLog.setText(text)
 
-        var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
+        val tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
 
-        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        val tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
         loadDataPokemon(tvEarthPokemon, earthPok)
     }
     private fun loadDataPokemon(tv: TextView, p: Pokemon) {
-        var description: String = ""
+        var description = ""
 
         description += p.getName() + "("
         description += "AP: " + p.getAttackPoints().toInt()

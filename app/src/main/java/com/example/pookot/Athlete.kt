@@ -16,7 +16,7 @@ open class Athlete(var name: String, var height: Float, var weight: Float, var a
 
 open class Runner(n: String, h: Float, w: Float, a: Int, override var runnerType: String, override var runnerSpeed: Float): Athlete(n, h, w, a), RunnerAction{
 
-    fun Runner(n: String, h: Float, w: Float, a: Int, Style: String, Speed: Float){
+  /*  fun Runner(n: String, h: Float, w: Float, a: Int, Style: String, Speed: Float){
         this.name = n
         this.height = h
         this.weight = w
@@ -24,15 +24,17 @@ open class Runner(n: String, h: Float, w: Float, a: Int, override var runnerType
         this.runnerType = Style
         this.runnerSpeed = Speed
     }
-    fun compete() {"Voy a correr!"}
+
+   */
+    fun compete() {println("Voy a correr!")}
 }
 
 
 class Cyclist(n: String, h: Float, w: Float, a: Int, override var bicycleType: String,
-              override var cylistSpeed: Float
+              override var cyclistSpeed: Float
 ): Athlete(n, h, w, a), CyclistAction {
 
-open fun Cyclist(n: String, h: Float, w: Float, a: Int, bType: String, Speed: Float) {
+/*open fun Cyclist(n: String, h: Float, w: Float, a: Int, bType: String, Speed: Float) {
         this.name = n
         this.height = h
         this.weight = w
@@ -41,12 +43,13 @@ open fun Cyclist(n: String, h: Float, w: Float, a: Int, bType: String, Speed: Fl
         this.cylistSpeed = Speed
     }
 
-
-    fun compete() {"Voy a pedalear!!!"}
+ */
+    fun compete() {println("Voy a pedalear!!!")}
 
 }
 open class Swimmer(n: String, h: Float, w: Float, a: Int, override var swimmerStyle: String, override var swimmerSpeed: Float): Athlete(n, h, w, a), SwimmerAction{
 
+/*
         fun Swimmer(n: String, h: Float, w: Float, a: Int, Style: String, Speed: Float){
             this.name = n
             this.height = h
@@ -56,17 +59,16 @@ open class Swimmer(n: String, h: Float, w: Float, a: Int, override var swimmerSt
             this.swimmerSpeed = Speed
         }
 
-
-        fun compete() {"Voy a nadar!"}
+*/
+        fun compete() {println("Voy a nadar!")}
 
     }
 
 class triAthlete(n: String, h: Float, w: Float, a: Int, override var swimmerStyle: String, override var swimmerSpeed: Float,
                  override var runnerType: String, override var runnerSpeed: Float,
-                 override var cylistSpeed: Float, override var bicycleType: String): Athlete(n,h,w,a), SwimmerAction, RunnerAction, CyclistAction{
+                 override var bicycleType: String, override var cyclistSpeed: Float): Athlete(n,h,w,a), SwimmerAction, RunnerAction, CyclistAction{
 
-
-                fun triAthlete(n: String, h: Float, w: Float, a: Int, swimmerStyle: String,
+    /*            fun triAthlete(n: String, h: Float, w: Float, a: Int, swimmerStyle: String,
                     swimmerSpeed: Float, runnerType: String,  runnerSpeed: Float,
                     cylistSpeed: Float, bicycleType: String){
                          this.name = n
@@ -80,6 +82,8 @@ class triAthlete(n: String, h: Float, w: Float, a: Int, override var swimmerStyl
                          this.bicycleType = bicycleType
                          this.cylistSpeed = cylistSpeed
                      }
+
+     */
 }
 
 interface RunnerAction{
@@ -89,8 +93,8 @@ interface RunnerAction{
 }
 interface CyclistAction{
     var bicycleType: String
-    var cylistSpeed: Float
-    fun rideBike() {println("Estoy usando la bicicleta ${this.bicycleType} y yendo a ${this.cylistSpeed} km/h!!")}
+    var cyclistSpeed: Float
+    fun rideBike() {println("Estoy usando la bicicleta ${this.bicycleType} y yendo a ${this.cyclistSpeed} km/h!!")}
 }
 interface SwimmerAction{
     var swimmerStyle: String
