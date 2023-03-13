@@ -1,6 +1,7 @@
-package com.example.pookot
+package com.example.pookot.pokemon
 
 import android.widget.Toast
+import com.example.pookot.MainActivity
 
 
 class waterPokemon(n: String= "Pok", aP: Float = 30f, lP: Float = 100f): Pokemon(n, lP, aP){

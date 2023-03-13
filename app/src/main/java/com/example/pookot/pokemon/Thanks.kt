@@ -1,6 +1,7 @@
-package com.example.pookot
+package com.example.pookot.pokemon
 
 import android.widget.Toast
+import com.example.pookot.MainActivity
 
 
 abstract class thanks(){

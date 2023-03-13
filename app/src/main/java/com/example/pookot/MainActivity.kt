@@ -1,17 +1,17 @@
 package com.example.pookot
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.pookot.pokemon.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PokemonCreationView {
+    private val pokemonNames = arrayOf("Gengar", "Mewtwo", "Jigglypuff")
+
     companion object {
         lateinit var maincontext: Context
     }
@@ -38,6 +38,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         maincontext = this
+
+        val viewer = PokemonViewer(this)
+        viewer.createPokemons()
+
+        val radioGroup = findViewById<RadioGroup>(R.id.rgPokemonNames)
+        val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
+        val etAttackPower = findViewById<EditText>(R.id.etAttackPower)
+        val btPokemon = findViewById<Button>(R.id.btPokemon)
+
+
+
+
 
 /*
         //Prueba ejercicios Atletas
@@ -153,15 +165,49 @@ class MainActivity : AppCompatActivity() {
             fight(firePok, earthPok)
         }
 
+
+
     }
 
+    override fun createPokemonRadioButtons(pokemonNames: Array<String>) {
+        val radioGroup = findViewById<RadioGroup>(R.id.rgPokemonNames)
 
+        for (pokemonName in pokemonNames) {
+            val radioButton = RadioButton(this)
+            radioButton.text = pokemonName
+            radioButton.id = View.generateViewId()
+            radioGroup.addView(radioButton)
+        }
+    }
+
+    fun createPokemon(v: View){
+
+        pok = Pokemon()
+
+        val radioGroup = findViewById<RadioGroup>(R.id.rgPokemonNames)
+        val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
+        val etAttackPower = findViewById<EditText>(R.id.etAttackPower)
+
+
+        if(radioButton != null && !etAttackPower.text.isNullOrEmpty())
+            pok.Pokemon(radioButton.text.toString(), etAttackPower.text.toString().toFloat())
+
+        val tvPokemon = findViewById<TextView>(R.id.tvPokemon)
+        loadDataPokemon(tvPokemon, pok)
+
+        val ivPokemon = findViewById<ImageView>(R.id.imgPokemon)
+        val resourceId = resources.getIdentifier(radioButton.text.toString().lowercase(), "mipmap", packageName)
+        ivPokemon.setImageResource(resourceId)
+
+    }
+/*
     fun createPokemon(v: View) {
+
+        pok = Pokemon()
+
 
         val etName = findViewById<EditText>(R.id.etName)
         val etAttackPower = findViewById<EditText>(R.id.etAttackPower)
-
-        pok = Pokemon()
 
         if (!etName.text.isNullOrEmpty() && !etAttackPower.text.isNullOrEmpty())
             pok.Pokemon(etName.text.toString(), etAttackPower.text.toString().toFloat())
@@ -174,12 +220,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+ */
+
     fun createWaterPokemon(v: View) {
+
+        waterPok = waterPokemon()
+
         val etWaterName = findViewById<EditText>(R.id.etWaterName)
         val etWaterAttackPower = findViewById<EditText>(R.id.etWaterAttackPower)
         val etWaterMaxResistence = findViewById<EditText>(R.id.etWaterMaxResistence)
-
-        waterPok = waterPokemon()
 
         if (!etWaterName.text.isNullOrEmpty() && !etWaterAttackPower.text.isNullOrEmpty())
             waterPok.waterPokemon(etWaterName.text.toString(), etWaterAttackPower.text.toString().toFloat(), etWaterMaxResistence.text.toString().toInt())
@@ -188,11 +237,9 @@ class MainActivity : AppCompatActivity() {
         imgWaterPokemon.setImageResource(R.mipmap.water)
         imgWaterPokemon.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
 
-
         val tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
-
     fun cureWaterPokemon(v: View) {
         waterPok.cure()
         val tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
@@ -202,7 +249,6 @@ class MainActivity : AppCompatActivity() {
     fun sayHiWaterPokemon(v: View) {
         waterPok.sayHi()
     }
-
     fun evolveWaterPokemon(v: View) {
         val etEvolveWaterPokemon = findViewById<EditText>(R.id.etEvolveWaterPokemon)
 
@@ -215,8 +261,6 @@ class MainActivity : AppCompatActivity() {
         loadDataPokemon(tvWaterPokemon, waterPok)
 
     }
-
-
     fun createFirePokemon(v: View) {
         val etFireName = findViewById<EditText>(R.id.etFireName)
         val etFireAttackPower = findViewById<EditText>(R.id.etFireAttackPower)

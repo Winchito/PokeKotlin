@@ -1,4 +1,4 @@
-package com.example.pookot
+package com.example.pookot.Peopleeople
 
 open class Person(var name: String = "Anonimo", var passport: String? = null) {
 

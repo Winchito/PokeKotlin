@@ -1,11 +1,11 @@
-package com.example.pookot
+package com.example.pookot.pokemon
 
 import android.widget.Toast
 import com.example.pookot.MainActivity.Companion.maincontext
 
 open class Pokemon(protected var name: String = "Pok",
                    protected var lifePoints: Float = 100f,
-                   protected var attackPoints: Float = 50f): thanks(){
+                   protected var attackPoints: Float = 50f): thanks() {
     fun Pokemon(n: String, aP: Float){
         this.name = n
         this.attackPoints = aP
@@ -22,7 +22,6 @@ open class Pokemon(protected var name: String = "Pok",
         this.lifePoints = 100f
         this.thanksCure()
     }
-
     fun evolve(n: String){
         this.name = n
         this.lifePoints += 100f

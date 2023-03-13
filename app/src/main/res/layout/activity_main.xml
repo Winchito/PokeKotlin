@@ -41,11 +41,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_margin="20dp">
-                    <EditText
-                        android:id="@+id/etName"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Nombre" />
+
+                    <RadioGroup
+                        android:id="@+id/rgPokemonNames"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </RadioGroup>
+
                     <EditText
                         android:id="@+id/etAttackPower"
                         android:layout_width="150dp"
@@ -57,6 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/black"
                         android:text="CREAR POKEMON"
                         android:onClick="createPokemon"/>
                 </LinearLayout>
@@ -101,6 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/SkyBlue"
                         android:text="CREAR"
                         android:onClick="createWaterPokemon"/>
                     <ImageView
@@ -122,6 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/SkyBlue"
                         android:text="SANAR"
                         android:onClick="cureWaterPokemon"/>
                     <Button
@@ -130,6 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/SkyBlue"
                         android:text="SALUDAR"
                         android:onClick="sayHiWaterPokemon"/>
 
@@ -147,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="@color/black"
+                        android:backgroundTint="@color/SkyBlue"
                         android:text="EVOLUCIONAR"
                         android:onClick="evolveWaterPokemon"/>
                 </LinearLayout>
@@ -185,6 +193,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/Orange"
                         android:text="CREAR"
                         android:onClick="createFirePokemon"/>
 
@@ -207,6 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/Orange"
                         android:text="SANAR"
                         android:onClick="cureFirePokemon"/>
                     <Button
@@ -215,6 +225,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/Orange"
                         android:text="SALUDAR"
                         android:onClick="sayHiFirePokemon"/>
 
@@ -232,6 +243,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="@color/black"
+                        android:backgroundTint="@color/Orange"
                         android:text="EVOLUCIONAR"
                         android:onClick="evolveFirePokemon"/>
                 </LinearLayout>
@@ -270,6 +282,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/SaddleBrown"
                         android:text="CREAR"
                         android:onClick="createEarthPokemon"/>
 
@@ -292,6 +305,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/SaddleBrown"
                         android:text="SANAR"
                         android:onClick="cureEarthPokemon"/>
                     <Button
@@ -300,6 +314,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/SaddleBrown"
                         android:text="SALUDAR"
                         android:onClick="sayHiEarthPokemon"/>
 
@@ -317,6 +332,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="@color/black"
+                        android:backgroundTint="@color/SaddleBrown"
                         android:text="EVOLUCIONAR"
                         android:onClick="evolveEarthPokemon"/>
                     <Button
@@ -324,7 +340,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
-                        android:backgroundTint ="@color/black"
+                        android:backgroundTint="@color/SaddleBrown"
                         android:textColor="@color/white"
                         android:text="DESPEDIR"
                         android:onClick="sayByeEarthPokemon"/>
