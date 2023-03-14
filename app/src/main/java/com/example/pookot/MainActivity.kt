@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.pookot.pokemon.*
+import com.example.pookot.main.pokemon.*
+
 
 
 class MainActivity : AppCompatActivity(), PokemonCreationView {
-    private val pokemonNames = arrayOf("Gengar", "Mewtwo", "Jigglypuff")
 
     companion object {
         lateinit var maincontext: Context
@@ -42,10 +42,7 @@ class MainActivity : AppCompatActivity(), PokemonCreationView {
         val viewer = PokemonViewer(this)
         viewer.createPokemons()
 
-        val radioGroup = findViewById<RadioGroup>(R.id.rgPokemonNames)
-        val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
-        val etAttackPower = findViewById<EditText>(R.id.etAttackPower)
-        val btPokemon = findViewById<Button>(R.id.btPokemon)
+
 
 
 

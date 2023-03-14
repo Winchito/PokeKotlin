@@ -1,4 +1,4 @@
-package com.example.pookot.pokemon
+package com.example.pookot.main.pokemon
 
 import android.widget.Toast
 import com.example.pookot.MainActivity

@@ -1,4 +1,4 @@
-package com.example.pookot.pokemon
+package com.example.pookot.main.pokemon
 
 interface PokemonCreationView{
     fun createPokemonRadioButtons(pokemonNames: Array<String>)

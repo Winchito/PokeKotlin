@@ -1,4 +1,4 @@
-package com.example.pookot.pokemon
+package com.example.pookot.main.pokemon
 
 class PokemonViewer(private val interfaz: PokemonCreationView) {
         fun createPokemons() {
