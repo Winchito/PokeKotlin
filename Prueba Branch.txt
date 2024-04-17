@@ -1,1 +1,7 @@
 Prueba de branch para commits
+
+
+
+
+Aqui este texto eventualmente le va a mostrar un error porque como existe en uno
+en el otro no va a existir nada.
